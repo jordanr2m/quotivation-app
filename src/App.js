@@ -12,6 +12,9 @@ function App() {
   const quotesUrl = "https://gist.githubusercontent.com/skillcrush-curriculum/6365d193df80174943f6664c7c6dbadf/raw/1f1e06df2f4fc3c2ef4c30a3a4010149f270c0e0/quotes.js";
   const categories = ["All", "Leadership", "Empathy", "Motivation", "Learning", "Empowerment"];
 
+  // Filter quotes
+  const filteredQuotes = category === "All" ? quotes : quotes.filter(quote => quote.categories.includes(category));
+
   const fetchQuotes = async () => {
     try {
       setIsLoading(true);
@@ -28,6 +31,10 @@ function App() {
     fetchQuotes();
   }, []);
 
+  const handleCategoryChange = (e) => {
+    setCategory(e.target.value);
+  };
+
   return (
     <div className='App'>
       <Header />
@@ -36,9 +43,10 @@ function App() {
           <Loader />
         ) : (
           <Quotes
-            quotes={quotes}
+            quotes={filteredQuotes}
             category={category}
             categories={categories}
+            handleCategoryChange={handleCategoryChange}
           />
         )}
       </main>

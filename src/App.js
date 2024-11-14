@@ -32,7 +32,15 @@ function App() {
     <div className='App'>
       <Header />
       <main>
-        {isLoading ? <Loader /> : <Quotes quotes={quotes} />}
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <Quotes
+            quotes={quotes}
+            category={category}
+            categories={categories}
+          />
+        )}
       </main>
       <Footer />
     </div>

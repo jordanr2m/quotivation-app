@@ -252,10 +252,25 @@ footer {
 
 .category-filter select {
   margin-left: 2rem;
-  padding: 7px 10px;
+  padding: 7px 14px;
   font-size: inherit;
   font-family: inherit;
   background-color: #ffffff;
+  cursor: pointer;
+  /* For custom arrow */
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Custom select arrow */
+.select-wrapper {
+  display: flex;
+}
+
+svg.arrow {
+  position: relative;
+  right: 24px;
+  pointer-events: none; /* Include this so the icon is clickable */
 }
 
 .quotes {

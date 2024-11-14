@@ -7,11 +7,14 @@ const CategoryForm = ({ category, categories, handleCategoryChange }) => {
             <form className='category-filter' onSubmit={(e) => e.preventDefault()}>
                 <Filter />
                 <label htmlFor='category'>Filter Quotes:</label>
-                <select id='category' name='category' value={category} onChange={handleCategoryChange}>
-                    {categories.map(category => (
-                        <option key={category} value={category}>{category}</option>
-                    ))}
-                </select>
+                <div className="select-wrapper">
+                    <select id='category' name='category' value={category} onChange={handleCategoryChange}>
+                        {categories.map(category => (
+                            <option key={category} value={category}>{category}</option>
+                        ))}
+                    </select>
+                    <IoIosArrowDown className="arrow" />
+                </div>
             </form>
         </div>
     )

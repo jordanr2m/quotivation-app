@@ -40,18 +40,18 @@ function App() {
   const addToFavorites = (quoteId) => {
     // console.log(`In favorite quotes with ${quoteId}`)
     const selectedQuote = quotes.find(quote => quote.id === quoteId);
-    // console.log(selectedQuote);
     const alreadyFavorite = favoriteQuotes.find(quote => quote.id === selectedQuote.id);
+    // console.log(alreadyFavorite);
 
     // Check if it is already a favorite quote
     if (favoriteQuotes.includes(alreadyFavorite)) {
       console.log("Already in favorites! Choose another.");
-      // Check if there are 3 quotes in favorites
+      // Check if there are less than 3 quotes in favorites
     } else if (favoriteQuotes.length < maxFaves) {
-      setFavoriteQuotes([selectedQuote, ...favoriteQuotes]);
       console.log("Added to favorites!");
+      setFavoriteQuotes([selectedQuote, ...favoriteQuotes]);
     } else {
-      console.log("Max number of favorites reached");
+      console.log("Max number of favorites reached. Remove one to add another");
     }
   };
 
@@ -59,6 +59,17 @@ function App() {
     <div className='App'>
       <Header />
       <main>
+        <section className="favorite-quotes">
+          <div className="wrapper quotes">
+            <h3>Top 3 favorite quotes</h3>
+            {favoriteQuotes.length > 0 && JSON.stringify(favoriteQuotes)}
+            <div className="favorite-quotes-description">
+              <p>You can add up to three favorites by selecting from the options below.<br />
+              Once you choose, they will appear here.
+              </p>
+            </div>
+          </div>
+        </section>
         {isLoading ? (
           <Loader />
         ) : (

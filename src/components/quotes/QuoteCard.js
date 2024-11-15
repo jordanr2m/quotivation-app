@@ -16,9 +16,7 @@ const QuoteCard = ({ quote, addToFavorites }) => {
             <footer>
                 <p className="author">{quote.author}</p>
                 <p className="add-favorite">
-                    {<IoHeartOutline
-                        onClick={() => addToFavorites(quote.id)}
-                    />}
+                    <IoHeartOutline onClick={() => addToFavorites(quote.id)} />
                 </p>
             </footer>
         </article>

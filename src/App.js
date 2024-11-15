@@ -38,7 +38,21 @@ function App() {
   };
 
   const addToFavorites = (quoteId) => {
-    console.log(`In favorite quotes with ${quoteId}`)
+    // console.log(`In favorite quotes with ${quoteId}`)
+    const selectedQuote = quotes.find(quote => quote.id === quoteId);
+    // console.log(selectedQuote);
+    const alreadyFavorite = favoriteQuotes.find(quote => quote.id === selectedQuote.id);
+
+    // Check if it is already a favorite quote
+    if (favoriteQuotes.includes(alreadyFavorite)) {
+      console.log("Already in favorites! Choose another.");
+      // Check if there are 3 quotes in favorites
+    } else if (favoriteQuotes.length < maxFaves) {
+      setFavoriteQuotes([selectedQuote, ...favoriteQuotes]);
+      console.log("Added to favorites!");
+    } else {
+      console.log("Max number of favorites reached");
+    }
   };
 
   return (

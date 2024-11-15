@@ -59,6 +59,12 @@ function App() {
     }
   };
 
+  // Delete favorite quote from list
+  const removeFromFavorites = (quoteId) => {
+    const newFavorites = favoriteQuotes.filter(quote => quote.id !== quoteId);
+    setFavoriteQuotes(newFavorites);
+  };
+
   return (
     <div className='App'>
       <Header />
@@ -66,6 +72,7 @@ function App() {
         <FavoriteQuotes
           favoriteQuotes={favoriteQuotes}
           maxFaves={maxFaves}
+          removeFromFavorites={removeFromFavorites}
         />
         {isLoading ? (
           <Loader />

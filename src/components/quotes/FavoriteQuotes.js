@@ -1,6 +1,6 @@
 import FavoriteQuoteCard from "./FavoriteQuoteCard"
 
-const FavoriteQuotes = ({ favoriteQuotes, maxFaves }) => {
+const FavoriteQuotes = ({ favoriteQuotes, maxFaves, removeFromFavorites }) => {
     return (
         <section className="favorite-quotes">
             <div className="wrapper quotes">
@@ -9,7 +9,11 @@ const FavoriteQuotes = ({ favoriteQuotes, maxFaves }) => {
                 {favoriteQuotes.length > 0 && (
                     <ul>
                         {favoriteQuotes.map(quote => (
-                            <FavoriteQuoteCard quote={quote} key={quote.id}/>
+                            <FavoriteQuoteCard
+                                quote={quote}
+                                key={quote.id}
+                                removeFromFavorites={removeFromFavorites}
+                            />
                         ))}
                     </ul>
                 )}

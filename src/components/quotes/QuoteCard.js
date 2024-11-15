@@ -1,4 +1,6 @@
-const QuoteCard = ({ quote }) => {
+import { IoHeartOutline } from "react-icons/io5";
+
+const QuoteCard = ({ quote, addToFavorites }) => {
     return (
         <article className="quote-card">
             <div>
@@ -13,6 +15,11 @@ const QuoteCard = ({ quote }) => {
             </div>
             <footer>
                 <p className="author">{quote.author}</p>
+                <p className="add-favorite">
+                    {<IoHeartOutline
+                        onClick={() => addToFavorites(quote.id)}
+                    />}
+                </p>
             </footer>
         </article>
     )

@@ -357,17 +357,17 @@ svg.arrow {
   padding: 0;
   margin-left: auto;
   text-align: right;
-  cursor: pointer;
-  transition: 0.3s;
 }
 
 .quote-card .add-favorite svg {
   display: inline-block;
-  width: 2ch;
+  width: 2.5ch;
   max-width: 60px;
   margin: 0;
   padding: 0;
   color: #333;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .quote-card .add-favorite:hover svg {

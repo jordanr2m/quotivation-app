@@ -1,7 +1,7 @@
 import QuoteCard from "./QuoteCard"
 import CategoryForm from "./CategoryForm"
 
-const Quotes = ({ quotes, category, categories, handleCategoryChange, addToFavorites }) => {
+const Quotes = ({ quotes, category, categories, handleCategoryChange, addToFavorites, favoriteQuotes, removeFromFavorites }) => {
     return (
         <section className="all-quotes">
             <div className="wrapper quotes">
@@ -19,6 +19,8 @@ const Quotes = ({ quotes, category, categories, handleCategoryChange, addToFavor
                         key={quote.id}
                         quote={quote}
                         addToFavorites={addToFavorites}
+                        favoriteQuotes={favoriteQuotes}
+                        removeFromFavorites={removeFromFavorites}
                     />
                 ))}
             </div>

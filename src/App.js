@@ -83,6 +83,8 @@ function App() {
             categories={categories}
             handleCategoryChange={handleCategoryChange}
             addToFavorites={addToFavorites}
+            favoriteQuotes={favoriteQuotes}
+            removeFromFavorites={removeFromFavorites}
           />
         )}
       </main>

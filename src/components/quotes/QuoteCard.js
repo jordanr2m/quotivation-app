@@ -1,6 +1,11 @@
-import { IoHeartOutline } from "react-icons/io5";
+import { IoHeartOutline, IoHeart } from "react-icons/io5";
+// import { Heart } from "react-feather";
 
-const QuoteCard = ({ quote, addToFavorites }) => {
+const QuoteCard = ({ quote, addToFavorites, favoriteQuotes, removeFromFavorites }) => {
+    const alreadyFavorite = favoriteQuotes.find(favorite => favorite.id === quote.id);
+    // const favoriteStyle = alreadyFavorite ? "#333" : "";
+    // <Heart style={{ fill: favoriteStyle }} />
+
     return (
         <article className="quote-card">
             <div>
@@ -16,7 +21,15 @@ const QuoteCard = ({ quote, addToFavorites }) => {
             <footer>
                 <p className="author">{quote.author}</p>
                 <p className="add-favorite">
-                    <IoHeartOutline onClick={() => addToFavorites(quote.id)} />
+                    {alreadyFavorite ? (
+                        <IoHeart
+                            onClick={() => removeFromFavorites(quote.id)}
+                        />
+                    ) : (
+                        <IoHeartOutline
+                            onClick={() => addToFavorites(quote.id)}
+                        />
+                    )}
                 </p>
             </footer>
         </article>

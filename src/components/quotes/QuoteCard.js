@@ -2,7 +2,9 @@ import { IoHeartOutline, IoHeart } from "react-icons/io5";
 // import { Heart } from "react-feather";
 
 const QuoteCard = ({ quote, addToFavorites, favoriteQuotes, removeFromFavorites }) => {
-    const alreadyFavorite = favoriteQuotes.find(favorite => favorite.id === quote.id);
+    const alreadyFavorite = favoriteQuotes.find(favorite => favorite.id === quote.id); // think of this as returnin "yes" or "no"
+
+    // SKILLCRUSH way of updating Heart UI
     // const favoriteStyle = alreadyFavorite ? "#333" : "";
     // <Heart style={{ fill: favoriteStyle }} />
 
@@ -22,13 +24,20 @@ const QuoteCard = ({ quote, addToFavorites, favoriteQuotes, removeFromFavorites 
                 <p className="author">{quote.author}</p>
                 <p className="add-favorite">
                     {alreadyFavorite ? (
-                        <IoHeart
+                        <button
+                            aria-label="Delete from favorites"
                             onClick={() => removeFromFavorites(quote.id)}
-                        />
+                        >
+                            <IoHeart />
+                        </button>
+
                     ) : (
-                        <IoHeartOutline
+                        <button
+                            aria-label="Add to favorites"
                             onClick={() => addToFavorites(quote.id)}
-                        />
+                        >
+                            <IoHeartOutline />
+                        </button>
                     )}
                 </p>
             </footer>

@@ -1,12 +1,13 @@
 const FavoriteQuoteCard = ({ quote, removeFromFavorites }) => {
     return (
         <li className="quote-card">
-            <span
+            <button
                 className="close-quote"
+                aria-label="Delete from favorites"
                 onClick={() => removeFromFavorites(quote.id)}
             >
                 x
-            </span>
+            </button>
             <h3>{quote.text}</h3>
             <p>{quote.author}</p>
         </li>

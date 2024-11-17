@@ -52,18 +52,16 @@ function App() {
 
     // Check if it is already a favorite quote
     if (alreadyFavorite) {
-      setMessageText("Already in favorites! Please choose another.");
-      setShowMessage(true);
       // console.log("Already in favorites! Choose another.");
       // Check if there are less than 3 quotes in favorites
     } else if (favoriteQuotes.length < maxFaves) {
-      setMessageText("Added to favorites!");
-      setShowMessage(true);
       setFavoriteQuotes([selectedQuote, ...favoriteQuotes]);
+      setMessageText("Quote added to favorites ♡")
+      setShowMessage(true);
       // More than 3 quotes
     } else {
       setShowMessage(true);
-      setMessageText("Max number of favorites reached. Remove one to add another");
+      setMessageText("Max number of favorite quotes reached! Remove one to add another.");
     }
   };
 
@@ -71,6 +69,8 @@ function App() {
   const removeFromFavorites = (quoteId) => {
     const newFavorites = favoriteQuotes.filter(quote => quote.id !== quoteId);
     setFavoriteQuotes(newFavorites);
+    setMessageText("Quote removed from favorites.")
+    setShowMessage(true);
   };
 
   // Close message
@@ -80,6 +80,7 @@ function App() {
 
   return (
     <div className='App'>
+      {showMessage && <Message messageText={messageText} removeMessage={removeMessage}/>}
       <Header />
       <main>
         <FavoriteQuotes

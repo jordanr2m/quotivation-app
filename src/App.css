@@ -117,8 +117,11 @@ footer {
   padding: 0.5rem 0.75rem;
   border-radius: 10px;
   cursor: pointer;
+  font-size: 1.25rem;
   font-weight: 700;
   transition: 0.3s;
+  background-color: transparent;
+  border: none;
 }
 
 .message .close-message:hover {
@@ -139,7 +142,7 @@ footer {
 }
 
 .favorite-quotes .quote-card {
-  margin: 0;
+  margin: 1.5rem auto;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -317,6 +320,7 @@ svg.arrow {
   transition: 0.1s;
   font-size: 1.6rem;
   font-weight: 700;
+  z-index: 99;
 }
 
 .quote-card .close-quote:hover {

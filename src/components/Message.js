@@ -1,11 +1,11 @@
-const Message = () => {
+const Message = ({ messageText, removeMessage }) => {
     return (
         <div className="message">
-            <p></p>
+            <p>{messageText}</p>
             <button
-                className="close-quote"
+                className="close-message"
                 aria-label="Delete from favorites"
-                // onClick={() => removeFromFavorites(quote.id)}
+                onClick={removeMessage}
             >
                 x
             </button>

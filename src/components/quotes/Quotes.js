@@ -7,7 +7,10 @@ const Quotes = ({ quotes, category, categories, handleCategoryChange, addToFavor
             <div className="wrapper quotes">
                 <div className="category-header">
                     <h2>Pick your Favorite Quotes Below</h2>
-                    <p>Browse through your collection of quotes</p>
+                    {/* <p>{category === "All" ? `You have a collection of ${quotes.length} great quotes!` : `You have a collection of ${quotes.length} great ${category} ${quotes.length === 1 ? "quote" : "quotes"}!`}</p> */}
+                    <p>
+                        You have {quotes.length > 0 && "a collection of"} {quotes.length} great {category !== "All" && category} {quotes.length === 1 ? "quote" : "quotes"}!
+                    </p>
                     <CategoryForm
                         category={category}
                         categories={categories}

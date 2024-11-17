@@ -320,7 +320,7 @@ svg.arrow {
   transition: 0.1s;
   font-size: 1.6rem;
   font-weight: 700;
-  z-index: 99;
+  z-index: 10;
 }
 
 .quote-card .close-quote:hover {

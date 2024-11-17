@@ -11,7 +11,7 @@ function App() {
   const [quotes, setQuotes] = useState([]); // API data
   const [isLoading, setIsLoading] = useState(false);
   const [category, setCategory] = useState("All");
-  const [favoriteQuotes, setFavoriteQuotes] = useState([]);
+  const [favoriteQuotes, setFavoriteQuotes] = useState(JSON.parse(window.localStorage.getItem("favoriteQuotes")) || []);
   const [messageText, setMessageText] = useState("");
   const [showMessage, setShowMessage] = useState(false);
 
@@ -34,6 +34,12 @@ function App() {
   useEffect(() => {
     fetchQuotes();
   }, []);
+
+  // Add favoriteQuotes to localStorage
+  useEffect(() => {
+    // Don't need to include window here, but Anne does to be extra safe
+    window.localStorage.setItem('favoriteQuotes', JSON.stringify(favoriteQuotes));
+  }, [favoriteQuotes]);
 
   // Filter quotes
   const filteredQuotes = category === "All" ? quotes : quotes.filter(quote => quote.categories.includes(category));

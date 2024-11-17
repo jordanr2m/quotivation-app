@@ -87,11 +87,11 @@ footer {
 }
 
 .message {
-  position: fixed;
+  position: fixed; /* Shows message regardless of user scrolling down AKA sticky */
   top: 20vh;
   left: 15%;
-  display: flex;
-  justify-content: space-between;
+  /* display: flex;
+  justify-content: space-between; */
   width: 70%;
   text-align: center;
   font-size: 1.25rem;
@@ -386,6 +386,7 @@ svg.arrow {
   cursor: pointer;
 }
 
+/* Message slide down effect */
 @keyframes slide-down {
   from {
     opacity: 0;

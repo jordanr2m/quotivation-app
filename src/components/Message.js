@@ -4,7 +4,7 @@ const Message = ({ messageText, removeMessage }) => {
             <p>{messageText}</p>
             <button
                 className="close-message"
-                aria-label="Delete from favorites"
+                aria-label="Close message"
                 onClick={removeMessage}
             >
                 x

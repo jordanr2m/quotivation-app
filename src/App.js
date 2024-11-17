@@ -47,21 +47,25 @@ function App() {
 
     // Find quote we clicked on
     const selectedQuote = quotes.find(quote => quote.id === quoteId);
-    // Find if quote is already in favoriteQuotes
-    const alreadyFavorite = favoriteQuotes.find(quote => quote.id === selectedQuote.id);
 
+    // SKILLCRUSH WAY - I removed this and replaced the functionality that happens when the user presses the heart icon more than once (Removes favorite quote vs displaying a message)
+    // Find if quote is already in favoriteQuotes
+    // const alreadyFavorite = favoriteQuotes.find(quote => quote.id === selectedQuote.id);
+
+    // SKILLCRUSH WAY REMOVED if statement before else if
     // Check if it is already a favorite quote
-    if (alreadyFavorite) {
-      // console.log("Already in favorites! Choose another.");
-      // Check if there are less than 3 quotes in favorites
-    } else if (favoriteQuotes.length < maxFaves) {
+    // if (alreadyFavorite) {
+    // console.log("Already in favorites! Choose another.");
+
+    // Check if there are less than 3 quotes in favorites
+    if (favoriteQuotes.length < maxFaves) {
       setFavoriteQuotes([selectedQuote, ...favoriteQuotes]);
       setMessageText("Quote added to favorites ♡")
       setShowMessage(true);
       // More than 3 quotes
     } else {
+      setMessageText("Max number of favorite quotes reached. Remove one to add another.");
       setShowMessage(true);
-      setMessageText("Max number of favorite quotes reached! Remove one to add another.");
     }
   };
 
@@ -73,14 +77,19 @@ function App() {
     setShowMessage(true);
   };
 
-  // Close message
+  // Close pop-up message
   const removeMessage = () => {
     setShowMessage(false);
   }
 
   return (
     <div className='App'>
-      {showMessage && <Message messageText={messageText} removeMessage={removeMessage}/>}
+      {showMessage && (
+        <Message
+          messageText={messageText}
+          removeMessage={removeMessage}
+        />
+      )}
       <Header />
       <main>
         <FavoriteQuotes

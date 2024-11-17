@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Quotes from "./components/quotes/Quotes";
+import Message from "./components/Message";
 import { Loader } from "react-feather";
 import "./App.css";
 import FavoriteQuotes from "./components/quotes/FavoriteQuotes";
@@ -11,6 +12,9 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [category, setCategory] = useState("All");
   const [favoriteQuotes, setFavoriteQuotes] = useState([]);
+  const [messageText, setMessageText] = useState("");
+  const [showMessage, setShowMessage] = useState(false);
+
   const quotesUrl = "https://gist.githubusercontent.com/skillcrush-curriculum/6365d193df80174943f6664c7c6dbadf/raw/1f1e06df2f4fc3c2ef4c30a3a4010149f270c0e0/quotes.js";
   const categories = ["All", "Leadership", "Empathy", "Motivation", "Learning", "Empowerment"];
   const maxFaves = 3; // max number of favorite quotes users can add
@@ -48,14 +52,18 @@ function App() {
 
     // Check if it is already a favorite quote
     if (alreadyFavorite) {
-      console.log("Already in favorites! Choose another.");
+      setMessageText("Already in favorites! Please choose another.");
+      setShowMessage(true);
+      // console.log("Already in favorites! Choose another.");
       // Check if there are less than 3 quotes in favorites
     } else if (favoriteQuotes.length < maxFaves) {
-      console.log("Added to favorites!");
+      setMessageText("Added to favorites!");
+      setShowMessage(true);
       setFavoriteQuotes([selectedQuote, ...favoriteQuotes]);
       // More than 3 quotes
     } else {
-      console.log("Max number of favorites reached. Remove one to add another");
+      setShowMessage(true);
+      setMessageText("Max number of favorites reached. Remove one to add another");
     }
   };
 
@@ -64,6 +72,11 @@ function App() {
     const newFavorites = favoriteQuotes.filter(quote => quote.id !== quoteId);
     setFavoriteQuotes(newFavorites);
   };
+
+  // Close message
+  const removeMessage = () => {
+    setShowMessage(false);
+  }
 
   return (
     <div className='App'>

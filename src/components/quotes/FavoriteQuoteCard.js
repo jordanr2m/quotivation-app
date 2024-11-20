@@ -1,6 +1,7 @@
-const FavoriteQuoteCard = ({ quote, removeFromFavorites }) => {
+const FavoriteQuoteCard = ({ quote, removeFromFavorites, listPosition }) => {
     return (
-        <li className="quote-card">
+        // Using CSS to display a data atribute containing the list number
+        <li className="quote-card" data-list-position={listPosition}>
             <button
                 className="close-quote"
                 aria-label="Delete from favorites"

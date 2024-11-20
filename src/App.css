@@ -130,6 +130,10 @@ footer {
   transform: scale(1.2);
 }
 
+.quotes ul {
+  padding-left: 0; /* Must have this to center favorite quotes (removes browser added padding) */
+}
+
 .favorite-quotes {
   display: flex;
   flex-wrap: wrap;
@@ -144,7 +148,7 @@ footer {
 }
 
 .favorite-quotes .quote-card {
-  margin: 1.5rem auto;
+  margin: 4.375rem auto;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -157,21 +161,22 @@ footer {
   color: #ad7000;
 }
 
-/* .favorite-quotes .quote-card::before {
-  content: "#" attr(data-list-position);
-  padding: 0 1rem;
+/* before selector allows us to sneak something into an element before it is output on the screen. It adds a bit of aesthetic content before it (not functional / accessible) */
+.favorite-quotes .quote-card::before {
+  content: "#" attr(data-list-position); /* Adds a pound symbol next to the value of a data attribute called “data-list-position”, which holds its number in the favoriteQuotes array that we get using JS */
+  padding: 0 1.25rem;
   position: absolute;
   top: -12px;
-  left: calc(50% - 51.5px);
-  width: 85px;
-  height: 20px;
+  /* left: calc(50% - 51.5px); */
+  /* width: 85px;
+  height: 20px; */
   text-align: center;
   font-family: "Mukta Mahee", sans-serif;
   font-size: 3.75rem;
   line-height: 20px;
   font-weight: 700;
   background-color: #ffe7a8;
-} */
+}
 
 .favorite-quotes .quote-card h3 {
   width: 90%;

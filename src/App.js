@@ -11,6 +11,7 @@ function App() {
   const [quotes, setQuotes] = useState([]); // API data
   const [isLoading, setIsLoading] = useState(false);
   const [category, setCategory] = useState("All");
+  // Check for favoriteQuotes in localStorage, or use an empty array if there are none
   const [favoriteQuotes, setFavoriteQuotes] = useState(JSON.parse(window.localStorage.getItem("favoriteQuotes")) || []);
   const [messageText, setMessageText] = useState("");
   const [showMessage, setShowMessage] = useState(false);
@@ -35,11 +36,11 @@ function App() {
     fetchQuotes();
   }, []);
 
-  // Add favoriteQuotes to localStorage
+  // Add favoriteQuotes to localStorage (DO this BEFORE updating starting state)
   useEffect(() => {
     // Don't need to include window here, but Anne does to be extra safe
     window.localStorage.setItem('favoriteQuotes', JSON.stringify(favoriteQuotes));
-  }, [favoriteQuotes]);
+  }, [favoriteQuotes]); // Runs each time favoriteQuotes updates
 
   // Filter quotes
   const filteredQuotes = category === "All" ? quotes : quotes.filter(quote => quote.categories.includes(category));
@@ -70,7 +71,7 @@ function App() {
       setShowMessage(true);
       // More than 3 quotes
     } else {
-      setMessageText("Max number of favorite quotes reached. Remove one to add another.");
+      setMessageText("Max number of favorites reached. Remove one quote to add another.");
       setShowMessage(true);
     }
   };

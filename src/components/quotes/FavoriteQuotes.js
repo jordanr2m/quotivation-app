@@ -1,4 +1,4 @@
-import FavoriteQuoteCard from "./FavoriteQuoteCard"
+import FavoriteQuoteCard from "./FavoriteQuoteCard";
 
 const FavoriteQuotes = ({ favoriteQuotes, maxFaves, removeFromFavorites }) => {
     return (
@@ -17,11 +17,16 @@ const FavoriteQuotes = ({ favoriteQuotes, maxFaves, removeFromFavorites }) => {
                         ))}
                     </ul>
                 )}
-                <div className="favorite-quotes-description">
-                    <p>You can add up to three favorites by selecting from the options below.<br />
-                        Once you choose, they will appear here.
-                    </p>
-                </div>
+    
+                {favoriteQuotes.length < maxFaves && (
+                    <div className="favorite-quotes-description">
+                        <p>
+                            You can add {maxFaves - favoriteQuotes.length} more {maxFaves - favoriteQuotes.length === 1 ? "quote" : "quotes"} to your top three favorites by selecting from the options below. <br />
+                            Once you choose, they will appear here.
+                        </p>
+                    </div>
+                )}
+
             </div>
         </section>
     )

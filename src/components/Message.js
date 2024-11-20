@@ -2,13 +2,15 @@ import { useEffect } from "react"
 
 const Message = ({ messageText, removeMessage }) => {
     // Remove popup message after 1.5s
+    // Anne uses window to be safe, but it isn't necessary
+    // You could also pass down a delay parameter and use that for the timeout length, making the function more flexible by having dif timeout lengths
     useEffect(() => {
         const messageTimeout = window.setTimeout(() => {
             removeMessage()
-        }, 1500);
+        }, 2000);
         // Cleanup function
         return () => window.clearTimeout(messageTimeout);
-    }); // No dependency needed
+    }); // No dependency needed (rare use case)
 
     return (
         <div className="message">
